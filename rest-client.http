@@ -1,0 +1,26 @@
+### Fetch songs request
+GET http://localhost:3000/songs
+
+### Find song request
+GET http://localhost:3000/songs/1
+
+### Create new song request
+POST http://localhost:3000/songs
+content-type: application/json
+
+{
+    "name": "Can You Hear The Music"
+}
+
+
+### Update song request
+PUT http://localhost:3000/songs/1
+content-type: application/json
+
+{
+    "name": "Can You Hear The Music"
+}
+
+
+### Delete song request
+DELETE http://localhost:3000/songs/1
