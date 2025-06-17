@@ -13,6 +13,7 @@ export class SongsService {
   }
 
   findAll(): Song[] {
-    return this.songs;
+    // return this.songs;
+    throw new Error('DB connection error');
   }
 }
