@@ -1,12 +1,18 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { Song, SongsService } from './songs.service';
 import { CreateSongDTO } from './dto/create-song-dto';
 
 @Controller('songs')
 export class SongsController {
-  constructor(
-    private songsService: SongsService
-  ) { }
+  constructor(private songsService: SongsService) {}
 
   @Get()
   findAll(): Song[] {
@@ -14,9 +20,8 @@ export class SongsController {
   }
 
   @Get(':id')
-  findById(@Param() params): string {
-    const { id } = params;
-    return 'This action returns a song'
+  findById(): string {
+    return 'This action returns a song';
   }
 
   @Post()
@@ -27,12 +32,12 @@ export class SongsController {
   }
 
   @Put(':id')
-  update(@Param('id') id: number): string {
-    return 'This action updates a song'
+  update(): string {
+    return 'This action updates a song';
   }
 
   @Delete(':id')
-  delete(@Param('id') id: number): string {
-    return 'This action deletes a song'
+  delete(): string {
+    return 'This action deletes a song';
   }
 }

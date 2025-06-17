@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 
 export type Song = {
-  title: string
-}
+  title: string;
+};
 
 @Injectable()
 export class SongsService {
@@ -13,6 +13,6 @@ export class SongsService {
   }
 
   findAll(): Song[] {
-    return this.songs
+    return this.songs;
   }
 }
