@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { Song, SongsService } from './songs.service';
+import { CreateSongDTO } from './dto/create-song-dto';
 
 @Controller('songs')
 export class SongsController {
@@ -19,10 +20,10 @@ export class SongsController {
   }
 
   @Post()
-  create(@Body() body): void {
+  create(@Body() createSongDTO: CreateSongDTO): void {
     // TODO: add validation logic
-    const { name } = body;
-    this.songsService.create(name);
+    const { title } = createSongDTO;
+    this.songsService.create(title);
   }
 
   @Put(':id')

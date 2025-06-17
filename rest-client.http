@@ -9,7 +9,10 @@ POST http://localhost:3000/songs
 content-type: application/json
 
 {
-    "name": "Can You Hear The Music"
+  "title": "Can You Hear The Music",
+  "artists": ["Ludwig Göransson"],
+  "releasedDate": "2023-07-21",
+  "duration": "05:38"
 }
 
 
