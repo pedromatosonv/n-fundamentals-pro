@@ -18,15 +18,16 @@ import { Song } from './songs/entities/song.entity';
       password: 'postgres',
       database: 'spotify-clone',
       entities: [Song],
-      synchronize: true,
+      synchronize: true, // SHOULDN'T BE USED IN PRODUCTION - OTHERWISE YOU CAN LOSE PRODUCTION DATA.
     }),
-    SongsModule],
+    SongsModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule implements NestModule {
   constructor(private dataSource: DataSource) {
-    console.log(dataSource.driver.database);
+    console.log(`Database connected: ${dataSource.driver.database}`);
   }
 
   configure(consumer: MiddlewareConsumer) {

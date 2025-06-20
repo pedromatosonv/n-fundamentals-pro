@@ -2,7 +2,7 @@
 GET http://localhost:3000/songs
 
 ### Find song request
-GET http://localhost:3000/songs/1
+GET http://localhost:3000/songs/2
 
 ### Create new song request
 POST http://localhost:3000/songs
@@ -17,13 +17,13 @@ content-type: application/json
 
 
 ### Update song request
-PUT http://localhost:3000/songs/1
+PUT http://localhost:3000/songs/4
 content-type: application/json
 
 {
-    "name": "Can You Hear The Music"
+    "title": "Can You Hear The Music"
 }
 
 
 ### Delete song request
-DELETE http://localhost:3000/songs/1
+DELETE http://localhost:3000/songs/2

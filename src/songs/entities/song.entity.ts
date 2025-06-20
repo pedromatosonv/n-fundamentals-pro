@@ -1,6 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity("songs")
+@Entity('songs')
 export class Song {
   @PrimaryGeneratedColumn()
   id: number;
@@ -8,15 +8,15 @@ export class Song {
   @Column()
   title: string;
 
-  @Column("varchar", { array: true })
+  @Column('varchar', { array: true })
   artists: string[];
 
-  @Column({ type: "date" })
+  @Column({ type: 'date' })
   releasedDate: Date;
 
-  @Column({ type: "time" })
+  @Column({ type: 'time' })
   duration: Date;
 
-  @Column({ type: "text" })
+  @Column({ type: 'text', nullable: true })
   lyrics: string;
 }

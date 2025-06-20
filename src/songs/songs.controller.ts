@@ -3,42 +3,50 @@ import {
   Controller,
   Delete,
   Get,
-  HttpException,
-  HttpStatus,
+  Param,
+  ParseIntPipe,
   Post,
   Put,
 } from '@nestjs/common';
 import { SongsService } from './songs.service';
 import { CreateSongDTO } from './dto/create-song-dto';
+import { Song } from './entities/song.entity';
+import { DeleteResult, UpdateResult } from 'typeorm';
 
 @Controller('songs')
 export class SongsController {
-  constructor(private songsService: SongsService) { }
+  constructor(private songsService: SongsService) {}
 
   @Get()
-  findAll(): any[] {
-    return this.songsService.findAll();
+  async findAll(): Promise<Song[]> {
+    return await this.songsService.findAll();
   }
 
   @Get(':id')
-  findById(): string {
-    return 'This action returns a song';
+  async findById(
+    @Param('id', new ParseIntPipe())
+    id: number,
+  ): Promise<Song | null> {
+    return await this.songsService.findById(id);
   }
 
   @Post()
-  create(@Body() createSongDTO: CreateSongDTO): void {
-    // TODO: add validation logic
-    const { title } = createSongDTO;
-    this.songsService.create(title);
+  async create(@Body() input: CreateSongDTO): Promise<Song> {
+    return await this.songsService.create(input);
   }
 
   @Put(':id')
-  update(): string {
-    return 'This action updates a song';
+  async update(
+    @Param('id', new ParseIntPipe()) id: number,
+    @Body() input: Partial<CreateSongDTO>,
+  ): Promise<UpdateResult> {
+    return await this.songsService.update(id, input);
   }
 
   @Delete(':id')
-  delete(): string {
-    return 'This action deletes a song';
+  async delete(
+    @Param('id', new ParseIntPipe()) id: number,
+  ): Promise<DeleteResult> {
+    return await this.songsService.remove(id);
   }
 }
