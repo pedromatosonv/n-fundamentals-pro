@@ -7,6 +7,10 @@ import { LoggerMiddleware } from './common/middleware/logger.middleware';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { Song } from './songs/entities/song.entity';
+import { User } from './users/user.entity';
+import { Artist } from './artists/artist.entity';
+import { Playlist } from './playlists/playlist.entity';
+import { PlaylistModule } from './playlists/playlists.module';
 
 @Module({
   imports: [
@@ -17,10 +21,11 @@ import { Song } from './songs/entities/song.entity';
       username: 'postgres',
       password: 'postgres',
       database: 'spotify-clone',
-      entities: [Song],
+      entities: [Song, User, Artist, Playlist],
       synchronize: true, // SHOULDN'T BE USED IN PRODUCTION - OTHERWISE YOU CAN LOSE PRODUCTION DATA.
     }),
     SongsModule,
+    PlaylistModule,
   ],
   controllers: [AppController],
   providers: [AppService],

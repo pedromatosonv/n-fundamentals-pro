@@ -27,3 +27,16 @@ content-type: application/json
 
 ### Delete song request
 DELETE http://localhost:3000/songs/2
+
+### Fetch users request
+GET http://localhost:3000/users
+
+### Create new playlist request
+POST http://localhost:3000/playlists
+content-type: application/json
+
+{
+  "title": "Oppenheimer",
+  "songIds": [5],
+  "userId": 1
+}

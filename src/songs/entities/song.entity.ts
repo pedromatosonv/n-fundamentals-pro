@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Playlist } from 'src/playlists/playlist.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('songs')
 export class Song {
@@ -19,4 +26,8 @@ export class Song {
 
   @Column({ type: 'text', nullable: true })
   lyrics: string;
+
+  @ManyToOne(() => Playlist)
+  @JoinColumn()
+  playlist: Playlist;
 }
